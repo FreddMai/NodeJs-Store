@@ -13,14 +13,9 @@ router.get("/products", isAuth, adminController.getProducts);
 router.post(
   "/add-product",
   [
-    body("title")
-      .isString()
-      .isLength({ min: 3 })
-      .trim(),
+    body("title").isString().isLength({ min: 3 }).trim(),
     body("price").isFloat(),
-    body("description")
-      .isLength({ min: 5, max: 400 })
-      .trim()
+    body("description").isLength({ min: 5, max: 400 }).trim(),
   ],
   isAuth,
   adminController.postAddProduct
@@ -38,12 +33,12 @@ router.post(
     body("price", "Please enter a valid price!").isFloat(),
     body("description", "Please enter a min length of 5 and max length of 400")
       .isLength({ min: 5, max: 400 })
-      .trim()
+      .trim(),
   ],
   isAuth,
   adminController.postEditProduct
 );
 
-router.post("/delete-product", isAuth, adminController.postDeleteProduct);
+router.delete("/product/:productId", isAuth, adminController.deleteProduct);
 
 module.exports = router;
