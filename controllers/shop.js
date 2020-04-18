@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
-// const stripe = require('stripe')('sk_test_fAo2hQXtl47kBnz7Ie4LmT2e003NKH1BMk');
+
+const stripe = require('stripe')(process.env.STRIPE_KEY);
 
 const PDFDocument = require("pdfkit");
 
@@ -153,7 +154,7 @@ exports.getCheckout = (req, res, next) => {
         total += p.quantity * p.productId.price;
       });
 
-      return stripe_key.checkout.sessions.create({
+      return stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         line_items: products.map((p) => {
           return {
