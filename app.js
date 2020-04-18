@@ -16,6 +16,7 @@ const morgan = require("morgan");
 const errorController = require("./controllers/error");
 const User = require("./models/user");
 
+
 const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-xwdzv.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`;
 
 const app = express();
