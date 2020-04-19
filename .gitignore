@@ -9,3 +9,7 @@ nodemon.json
 /images
 
 .vscode
+
+server.cert
+
+server.key
